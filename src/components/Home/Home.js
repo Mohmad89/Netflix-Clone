@@ -2,6 +2,9 @@ import './Home.css'
 import MovieList from '../MovieList/MovieList'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Route , Routes } from 'react-router-dom'
+import FavList from '../FavList/FavList'
+import Navbar2 from '../Navbar2/Navbar2'
 
 function Home() {
     
@@ -29,10 +32,13 @@ function Home() {
         })(); //self calling function ()
     }, []);
 
-
     return (
-        <>
-            <MovieList data={data}/>
+        <>   <Navbar2/>
+            <Routes>
+                <Route path='/' exact element={<MovieList data={data}/>} />
+                <Route path='/getMovies' exact element={<FavList />} />
+            </Routes>
+            
         </>
     );
 }
